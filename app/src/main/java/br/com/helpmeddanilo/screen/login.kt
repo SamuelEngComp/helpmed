@@ -16,13 +16,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.com.helpmeddanilo.R
+import br.com.helpmeddanilo.navigation.Screens
 import br.com.helpmeddanilo.ui.theme.corDaBordaDosCamposLogin
 import br.com.helpmeddanilo.ui.theme.verdoDoBotao
 
 
 @Composable
-fun Login(){
+fun Login(navController: NavController){
 
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
@@ -71,7 +73,9 @@ fun Login(){
         Text(text = "Continue se não possuir cadastro")
 
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                      navController.navigate(route = Screens.Welcome.route)
+                      },
             shape = RoundedCornerShape(20.dp),
             border = BorderStroke(1.dp, color = verdoDoBotao)
         ){

@@ -15,13 +15,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.com.helpmeddanilo.R
+import br.com.helpmeddanilo.navigation.Screens
 import br.com.helpmeddanilo.ui.theme.corDoIcone
 import br.com.helpmeddanilo.ui.theme.verdoDoBotao
 
 
 @Composable
-fun Welcome(){
+fun Welcome(navController: NavController){
     
     Column(
         modifier = Modifier
@@ -67,7 +69,14 @@ fun Welcome(){
             }
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate(Screens.EmergencyType.route)
+                    /*{
+                        popUpTo(Screens.EmergencyType.route){
+                            inclusive = true
+                        }
+                    }*/
+                          },
                 modifier = Modifier.padding(10.dp),
                 shape = RoundedCornerShape(30.dp),
                 colors = ButtonDefaults.buttonColors(

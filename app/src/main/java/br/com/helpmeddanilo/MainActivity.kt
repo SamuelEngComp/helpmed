@@ -10,12 +10,20 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import br.com.helpmeddanilo.navigation.SetupNavGraph
+import br.com.helpmeddanilo.screen.EmergencyType
 import br.com.helpmeddanilo.screen.Login
 import br.com.helpmeddanilo.screen.Welcome
 import br.com.helpmeddanilo.ui.theme.HelpMedDaniloTheme
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var navController: NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContent {
             HelpMedDaniloTheme {
@@ -24,8 +32,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+
+                    navController = rememberNavController()
+
                     //Login()
-                    Welcome()
+                    //Welcome()
+                    //EmergencyType()
+                    
+                    SetupNavGraph(navController = navController)
                 }
             }
         }
