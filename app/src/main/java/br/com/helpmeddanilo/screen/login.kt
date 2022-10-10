@@ -47,7 +47,8 @@ fun Login(navController: NavController){
             onValueChange = {email = it},
             shape = CircleShape,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            placeholder = {Text(text = "E-mail ou nome de usuário")}
+            placeholder = {Text(text = "E-mail ou nome de usuário")},
+            singleLine = true
         )
         
         Spacer(modifier = Modifier.height(10.dp))
@@ -57,7 +58,8 @@ fun Login(navController: NavController){
             onValueChange = {senha = it},
             shape = CircleShape,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            placeholder = {Text(text = "Senha")}
+            placeholder = {Text(text = "Senha")},
+            singleLine = true
         )
         
         OutlinedButton(
