@@ -6,15 +6,18 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.helpmeddanilo.R
@@ -27,7 +30,14 @@ import br.com.helpmeddanilo.ui.theme.verdoDoBotao
 fun Login(navController: NavController){
 
     var email by remember { mutableStateOf("") }
-    var senha by remember { mutableStateOf("") }
+    var senha by rememberSaveable { mutableStateOf("") }
+    var senhaVisivel by remember { mutableStateOf(false) }
+
+    val icon = if (senhaVisivel){
+        painterResource(id = R.drawable.ic_visibility_24)
+    }else{
+        painterResource(id = R.drawable.ic_visibility_off_24)
+    }
 
 
 
@@ -57,9 +67,23 @@ fun Login(navController: NavController){
             value = senha,
             onValueChange = {senha = it},
             shape = CircleShape,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Send,
+                capitalization = KeyboardCapitalization.Characters
+            ),
+            trailingIcon = {
+                           IconButton(onClick = { senhaVisivel = !senhaVisivel }) {
+                               Icon(painter = icon, contentDescription = "icone visibi")
+                           }
+            },
             placeholder = {Text(text = "Senha")},
-            singleLine = true
+            singleLine = true,
+            visualTransformation = if (senhaVisivel){
+                VisualTransformation.None
+            } else{
+                PasswordVisualTransformation()
+            }
         )
         
         OutlinedButton(
