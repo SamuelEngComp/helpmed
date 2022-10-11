@@ -6,13 +6,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import br.com.helpmeddanilo.screen.EmergencyType
 import br.com.helpmeddanilo.screen.Login
+import br.com.helpmeddanilo.screen.PerfilUser
 import br.com.helpmeddanilo.screen.Welcome
 
 
 @Composable
 fun SetupNavGraph(
     navController: NavHostController
-
 ){
 
     NavHost(
@@ -36,6 +36,13 @@ fun SetupNavGraph(
         ){
             EmergencyType(navController = navController)
         }
+
+        composable(
+            route = Screens.PerfilUser.route
+        ){
+            PerfilUser(navController = navController)
+        }
+
     }
 
 

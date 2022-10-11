@@ -29,7 +29,7 @@ import br.com.helpmeddanilo.ui.theme.verdoDoBotao
 @Composable
 fun Login(navController: NavController){
 
-    var email by remember { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
     var senha by rememberSaveable { mutableStateOf("") }
     var senhaVisivel by remember { mutableStateOf(false) }
 
@@ -49,7 +49,7 @@ fun Login(navController: NavController){
         Image(
             painter = painterResource(id = R.drawable.logo02semfundo),
             contentDescription = "Logotipo",
-        modifier = Modifier.size(250.dp)
+        modifier = Modifier.size(210.dp)
         )
 
         OutlinedTextField(
@@ -87,11 +87,18 @@ fun Login(navController: NavController){
         )
         
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController.navigate(route = Screens.Welcome.route)
+                      },
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = verdoDoBotao
             ),
-            shape = RoundedCornerShape(20.dp)
+            shape = RoundedCornerShape(20.dp),
+            enabled = if (email.isNotBlank() && senha.isNotBlank()){
+                true
+            }else{
+                false
+            }
         ){
             Text(text = "Acessar", color = Color.White)
         }

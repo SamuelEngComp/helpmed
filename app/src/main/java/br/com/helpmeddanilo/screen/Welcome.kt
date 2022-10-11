@@ -52,7 +52,9 @@ fun Welcome(navController: NavController){
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                          navController.navigate(route = Screens.PerfilUser.route)
+                          },
                 modifier = Modifier.padding(10.dp),
                 shape = RoundedCornerShape(30.dp),
                 colors = ButtonDefaults.buttonColors(
