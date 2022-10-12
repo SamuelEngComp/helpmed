@@ -48,88 +48,109 @@ fun ServiceEvaluation(navController: NavController){
                 .fillMaxSize()
                 .padding(contentPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center) {
+        verticalArrangement = Arrangement.SpaceBetween) {
 
-
-            Text(text = "Avalie o atendimento",
-                style = MaterialTheme.typography.h5, textAlign = TextAlign.Center)
-
-            Button(
-                onClick = {
-                    abrirAlert = !abrirAlert
-                },
-                shape = CircleShape,
-                colors = ButtonDefaults.outlinedButtonColors(
-                    backgroundColor = verdoDoBotao)
-            )
-            {
-                Text(text = "Muito bom", color = Color.White)
+            Row(modifier = Modifier.padding(20.dp)) {
+                Text(text = "Avalie o atendimento",
+                    style = MaterialTheme.typography.h5, textAlign = TextAlign.Center)
             }
 
-            Button(
-                    onClick = {
-                        abrirAlert = !abrirAlert
-                    },
-            shape = CircleShape,
-            colors = ButtonDefaults.outlinedButtonColors(
-                backgroundColor = verdoDoBotao)
-            )
-            {
-                Text(text = "Bom", color = Color.White)
-            }
 
-            Button(
-                onClick = {
-                    abrirAlert = !abrirAlert
-                },
-                shape = CircleShape,
-                colors = ButtonDefaults.outlinedButtonColors(
-                    backgroundColor = verdoDoBotao)
-            )
-            {
-                Text(text = "Regular", color = Color.White)
-            }
 
-            Button(
-                onClick = {
-                    abrirAlert = !abrirAlert
-                },
-                shape = CircleShape,
-                colors = ButtonDefaults.outlinedButtonColors(
-                    backgroundColor = verdoDoBotao
-                )
-            )
-            {
-                Text(text = "Ruim", color = Color.White)
-            }
+            Row() {
 
-            Button(
-                onClick = {
-                    abrirAlert = !abrirAlert
-                },
-                shape = CircleShape,
-                colors = ButtonDefaults.outlinedButtonColors(
-                    backgroundColor = verdoDoBotao)
-            )
-            {
-                Text(text = "Muito ruim", color = Color.White)
-            }
+                Column(verticalArrangement = Arrangement.SpaceAround) {
 
-            OutlinedButton(
-                onClick = {
-                    navController.navigate(route = Screens.Welcome.route)
-                },
-                shape = RoundedCornerShape(20.dp),
-                border = BorderStroke(1.dp, color = verdoDoBotao)
-            ){
-                Text(text = "Pular avaliação",
-                    color = if (isSystemInDarkTheme()){
-                        Color.White
-                    }else{
-                        Color.Black
+                    Button(
+                        onClick = {
+                            abrirAlert = !abrirAlert
+                        },
+                        modifier = Modifier.fillMaxWidth(0.7f),
+                        shape = CircleShape,
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            backgroundColor = verdoDoBotao)
+                    )
+                    {
+                        Text(text = "Muito bom", color = Color.White)
                     }
-                )
+
+                    Button(
+                        onClick = {
+                            abrirAlert = !abrirAlert
+                        },
+                        modifier = Modifier.fillMaxWidth(0.7f),
+                        shape = CircleShape,
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            backgroundColor = verdoDoBotao)
+                    )
+                    {
+                        Text(text = "Bom", color = Color.White)
+                    }
+
+                    Button(
+                        onClick = {
+                            abrirAlert = !abrirAlert
+                        },
+                        modifier = Modifier.fillMaxWidth(0.7f),
+                        shape = CircleShape,
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            backgroundColor = verdoDoBotao)
+                    )
+                    {
+                        Text(text = "Regular", color = Color.White)
+                    }
+
+                    Button(
+                        onClick = {
+                            abrirAlert = !abrirAlert
+                        },
+                        modifier = Modifier.fillMaxWidth(0.7f),
+                        shape = CircleShape,
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            backgroundColor = verdoDoBotao
+                        )
+                    )
+                    {
+                        Text(text = "Ruim", color = Color.White)
+                    }
+
+                    Button(
+                        onClick = {
+                            abrirAlert = !abrirAlert
+                        },
+                        modifier = Modifier.fillMaxWidth(0.7f),
+                        shape = CircleShape,
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            backgroundColor = verdoDoBotao)
+                    )
+                    {
+                        Text(text = "Muito ruim", color = Color.White)
+                    }
+                }
+
             }
+
+
+            Row(modifier = Modifier.padding(10.dp)) {
+                OutlinedButton(
+                    onClick = {
+                        navController.navigate(route = Screens.Welcome.route)
+                    },
+                    modifier = Modifier.fillMaxWidth(0.7f),
+                    shape = RoundedCornerShape(20.dp),
+                    border = BorderStroke(1.dp, color = verdoDoBotao)
+                ){
+                    Text(text = "Pular avaliação",
+                        color = if (isSystemInDarkTheme()){
+                            Color.White
+                        }else{
+                            Color.Black
+                        }
+                    )
+                }
+            }
+
+
 
             if (abrirAlert){
                 AlertDialog(

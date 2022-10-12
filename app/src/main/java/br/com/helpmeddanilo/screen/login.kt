@@ -56,7 +56,10 @@ fun Login(navController: NavController){
             value = email,
             onValueChange = {email = it},
             shape = CircleShape,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            ),
             placeholder = {Text(text = "E-mail ou nome de usuário")},
             singleLine = true,
             maxLines = 1,
@@ -71,8 +74,7 @@ fun Login(navController: NavController){
             shape = CircleShape,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password,
-                imeAction = ImeAction.Send,
-                capitalization = KeyboardCapitalization.Characters
+                imeAction = ImeAction.Done
             ),
             trailingIcon = {
                            IconButton(onClick = { senhaVisivel = !senhaVisivel }) {
