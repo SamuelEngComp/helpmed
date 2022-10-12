@@ -263,7 +263,9 @@ fun BarraNavegacaoUser(navController: NavController){
             }
         },
         actions = {
-            IconButton(onClick = { /*TODO*/ }, modifier = Modifier.padding(2.dp)) {
+            IconButton(onClick = {
+                                 navController.navigate(Screens.TypeCall.route)
+            }, modifier = Modifier.padding(2.dp)) {
                 Text(text = "Pular")
             }
         },

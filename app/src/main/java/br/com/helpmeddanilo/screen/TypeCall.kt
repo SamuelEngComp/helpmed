@@ -8,28 +8,24 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.helpmeddanilo.R
 import br.com.helpmeddanilo.navigation.Screens
-
 import br.com.helpmeddanilo.ui.theme.verdoDoBotao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun EmergencyType(navController: NavController){
+fun TypeCall(navController: NavController){
 
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
@@ -37,11 +33,11 @@ fun EmergencyType(navController: NavController){
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            BarraNavegacao(navController = navController)
-                 },
+            BarraNavegacaoType(navController = navController)
+        },
 
         content = {
-            contentPadding -> Column(
+                contentPadding -> Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding),
@@ -49,12 +45,13 @@ fun EmergencyType(navController: NavController){
             verticalArrangement = Arrangement.Center) {
 
             Image(
-                painter = painterResource(id = R.drawable.escolhasemfundo),
-                contentDescription = "Logo escolha")
+                painter = painterResource(id = R.drawable.atendimentosemfundo),
+                contentDescription = "Logo escolha",
+                modifier = Modifier.size(210.dp))
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Text(text = "Escolha o tipo de emergência que necessita",
+            Text(text = "Você gostaria que seu atendimento seja",
                 style = MaterialTheme.typography.body2, textAlign = TextAlign.Center)
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -63,13 +60,15 @@ fun EmergencyType(navController: NavController){
             Button(
                 onClick = {
 
-                    navController.navigate(Screens.TypeCall.route)
+                          navController.navigate(Screens.AddressUser.route)
+
+
                     /*coroutineScope.launch {
 
                         val snackBarResult = scaffoldState.snackbarHostState.showSnackbar(
-                              message = "Ainda em desenvolvimento",
-                              actionLabel = "fechar"
-                          )
+                            message = "Ainda em desenvolvimento",
+                            actionLabel = "fechar"
+                        )
 
                         when(snackBarResult){
                             SnackbarResult.Dismissed -> Log.d("Snack", "Dismissed")
@@ -88,14 +87,14 @@ fun EmergencyType(navController: NavController){
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center){
 
-                    Text(text = "Chamada emergencial", color = Color.White)
+                    Text(text = "Chamada via áudio", color = Color.White)
                 }
             }
 
             Button(
                 onClick = {
-                    navController.navigate(Screens.TypeCall.route)
 
+                    navController.navigate(Screens.AddressUser.route)
                     /*coroutineScope.launch {
 
                         val snackBarResult = scaffoldState.snackbarHostState.showSnackbar(
@@ -121,7 +120,7 @@ fun EmergencyType(navController: NavController){
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center) {
 
-                    Text(text = "Chamada de especialista", color = Color.White)
+                    Text(text = "Chamada via texto", color = Color.White)
                 }
             }
         }
@@ -132,21 +131,22 @@ fun EmergencyType(navController: NavController){
 
 
 @Composable
-fun BarraNavegacao(navController: NavController){
+fun BarraNavegacaoType(navController: NavController){
 
 
     TopAppBar(
         title = { Text(text = "")},
         navigationIcon = {
             IconButton(onClick = {
-                navController.navigate(Screens.Welcome.route){
-                    popUpTo(Screens.Welcome.route){
+                navController.navigate(Screens.EmergencyType.route){
+                    popUpTo(Screens.EmergencyType.route){
                         inclusive = true
                     }
                 }
             })
             {
-                    Icon(Icons.Default.ArrowBack,
+                Icon(
+                    Icons.Default.ArrowBack,
                     contentDescription = "Icone de voltar")
             }
         },
@@ -158,5 +158,3 @@ fun BarraNavegacao(navController: NavController){
         elevation = 0.dp
     )
 }
-
-

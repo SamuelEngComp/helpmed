@@ -17,7 +17,8 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.HelpMedDanilo"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

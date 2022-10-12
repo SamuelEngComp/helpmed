@@ -4,10 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import br.com.helpmeddanilo.screen.EmergencyType
-import br.com.helpmeddanilo.screen.Login
-import br.com.helpmeddanilo.screen.PerfilUser
-import br.com.helpmeddanilo.screen.Welcome
+import br.com.helpmeddanilo.screen.*
 
 
 @Composable
@@ -41,6 +38,30 @@ fun SetupNavGraph(
             route = Screens.PerfilUser.route
         ){
             PerfilUser(navController = navController)
+        }
+
+        composable(
+            route = Screens.TypeCall.route
+        ){
+            TypeCall(navController = navController)
+        }
+
+        composable(
+            route = Screens.AddressUser.route
+        ){
+            AddressUser(navController = navController)
+        }
+
+        composable(
+            route = Screens.ScreenMessage.route
+        ){
+            ScreenMessage(navController = navController)
+        }
+
+        composable(
+            route = Screens.ServiceEvaluation.route
+        ){
+            ServiceEvaluation(navController = navController)
         }
 
     }
