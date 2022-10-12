@@ -58,7 +58,9 @@ fun Login(navController: NavController){
             shape = CircleShape,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             placeholder = {Text(text = "E-mail ou nome de usuário")},
-            singleLine = true
+            singleLine = true,
+            maxLines = 1,
+            modifier = Modifier.fillMaxWidth()
         )
         
         Spacer(modifier = Modifier.height(10.dp))
@@ -83,7 +85,9 @@ fun Login(navController: NavController){
                 VisualTransformation.None
             } else{
                 PasswordVisualTransformation()
-            }
+            },
+            maxLines = 1,
+            modifier = Modifier.fillMaxWidth()
         )
         
         OutlinedButton(
@@ -98,7 +102,8 @@ fun Login(navController: NavController){
                 true
             }else{
                 false
-            }
+            },
+            modifier = Modifier.padding(10.dp).fillMaxWidth(0.7f)
         ){
             Text(text = "Acessar", color = Color.White)
         }
@@ -110,7 +115,8 @@ fun Login(navController: NavController){
                       navController.navigate(route = Screens.Welcome.route)
                       },
             shape = RoundedCornerShape(20.dp),
-            border = BorderStroke(1.dp, color = verdoDoBotao)
+            border = BorderStroke(1.dp, color = verdoDoBotao),
+            modifier = Modifier.padding(10.dp).fillMaxWidth(0.7f)
         ){
             Text(text = "Continue",
                 color = if (isSystemInDarkTheme()){

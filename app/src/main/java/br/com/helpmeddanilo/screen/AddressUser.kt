@@ -60,13 +60,16 @@ fun AddressUser(navController: NavController){
                 onValueChange = {enderecoUsuario = it},
                 placeholder = { Text(text = "Seu endereço")},
             shape = CircleShape,
-                modifier = Modifier.padding(10.dp)
+                modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                singleLine = true,
+                maxLines = 1
             )
 
             Button(
                 onClick = {
                     navController.navigate(Screens.ScreenMessage.route)
                           },
+                modifier = Modifier.fillMaxWidth(0.7f),
             shape = CircleShape,
             colors = ButtonDefaults.outlinedButtonColors(
                 backgroundColor = verdoDoBotao)

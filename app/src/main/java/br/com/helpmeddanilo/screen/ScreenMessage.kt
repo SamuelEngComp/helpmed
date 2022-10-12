@@ -4,10 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -70,7 +67,8 @@ fun ScreenMessage(navController: NavController){
                     Color.White
                 }
             ) {
-                Text(text = "Bom dia, preciso de atendimento", modifier = Modifier.padding(30.dp))
+                Text(text = "Bom dia, preciso de atendimento",
+                    modifier = Modifier.padding(30.dp), color = Color.Black)
             }
 
             Card(
@@ -88,7 +86,8 @@ fun ScreenMessage(navController: NavController){
                 }
             ) {
 
-                Text(text = "Boa tarde, preciso de atendimento", modifier = Modifier.padding(30.dp))
+                Text(text = "Boa tarde, preciso de atendimento",
+                    modifier = Modifier.padding(30.dp), color = Color.Black)
 
             }
 
@@ -107,7 +106,8 @@ fun ScreenMessage(navController: NavController){
                 }
             ) {
 
-                Text(text = "Boa noite, preciso de atendimento", modifier = Modifier.padding(30.dp))
+                Text(text = "Boa noite, preciso de atendimento",
+                    modifier = Modifier.padding(30.dp), color = Color.Black)
 
             }
 
@@ -115,6 +115,7 @@ fun ScreenMessage(navController: NavController){
                 onClick = {
                     abrirAlert = !abrirAlert
                 },
+                modifier = Modifier.fillMaxWidth(0.7f),
                 shape = CircleShape,
                 colors = ButtonDefaults.outlinedButtonColors(
                     backgroundColor = verdoDoBotao
@@ -130,16 +131,28 @@ fun ScreenMessage(navController: NavController){
             if (abrirAlert){
                 AlertDialog(
                     onDismissRequest = { openDialog.value = false },
-                    title = { Text(text = "Seu atendimento esta sendo encaminhado")},
+                    title = {
+                        Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+                            Image(
+                                painter = painterResource(id = R.drawable.ic_baseline_thumb_up_24),
+                                contentDescription = "icone like",
+                                modifier = Modifier
+                                    .size(60.dp)
+                                    .fillMaxWidth(),
+                                alignment = Alignment.Center
+                            )
+                        }
+
+                            },
                     text = {Text(text = "Seu atendimento esta sendo encaminhado")},
                     confirmButton = {
-                        Button(
+                        /*Button(
                             onClick = {
                                 openDialog.value = false
                                 navController.navigate(Screens.ServiceEvaluation.route)
                             }) {
                             Text(text = "Ok")
-                        }
+                        }*/
                     },
                     dismissButton = {
                         Button(
@@ -147,7 +160,7 @@ fun ScreenMessage(navController: NavController){
                                 openDialog.value = true
                                 navController.navigate(Screens.ServiceEvaluation.route)
                             }) {
-                            Text(text = "No")
+                            Text(text = "Ok")
                         }
                     }
                 )

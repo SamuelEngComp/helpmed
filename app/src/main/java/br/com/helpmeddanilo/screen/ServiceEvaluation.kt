@@ -1,11 +1,10 @@
 package br.com.helpmeddanilo.screen
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -15,9 +14,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import br.com.helpmeddanilo.R
 import br.com.helpmeddanilo.navigation.Screens
 import br.com.helpmeddanilo.ui.theme.verdoDoBotao
 
@@ -46,11 +47,12 @@ fun ServiceEvaluation(navController: NavController){
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
 
 
             Text(text = "Avalie o atendimento",
-                style = MaterialTheme.typography.body2, textAlign = TextAlign.Center)
+                style = MaterialTheme.typography.h5, textAlign = TextAlign.Center)
 
             Button(
                 onClick = {
@@ -132,12 +134,15 @@ fun ServiceEvaluation(navController: NavController){
             if (abrirAlert){
                 AlertDialog(
                     onDismissRequest = { openDialog.value = false },
-                    title = { Text(text = "Seu atendimento esta sendo encaminhado")},
-                    text = {Text(text = "Seu atendimento esta sendo encaminhado")},
+                    title = { Image(painter = painterResource(id = R.drawable.ic_baseline_thumb_up_24),
+                        contentDescription = "icone curtir",
+                        modifier = Modifier.size(60.dp),
+                        alignment = Alignment.Center)},
+                    text = {Text(text = "Muito obrigado por sua avaliação")},
                     confirmButton = {
-                        Button(onClick = { openDialog.value = false }) {
+                        /*Button(onClick = { openDialog.value = false }) {
                             Text(text = "Ok")
-                        }
+                        }*/
                     },
                     dismissButton = {
                         Button(
@@ -145,7 +150,7 @@ fun ServiceEvaluation(navController: NavController){
                                 openDialog.value = true
                                 navController.navigate(Screens.Login.route)
                             }) {
-                            Text(text = "No")
+                            Text(text = "ok")
                         }
                     }
                 )

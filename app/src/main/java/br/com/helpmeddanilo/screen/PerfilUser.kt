@@ -65,33 +65,41 @@ fun PerfilUser(navController: NavController){
             Spacer(modifier = Modifier.height(10.dp))
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(10.dp).fillMaxWidth(),
                 value = nomeCompletoDoPaciente,
                 onValueChange = {nomeCompletoDoPaciente = it},
                 shape = CircleShape,
-            placeholder = { Text(text = "Nome completo do paciente")}
+            placeholder = { Text(text = "Nome completo do paciente")},
+                singleLine = true,
+                maxLines = 1
             )
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(10.dp).fillMaxWidth(),
                 value = numeroDoRG,
                 onValueChange = {numeroDoRG = it},
                 shape = CircleShape,
-                placeholder = { Text(text = "Número de RG")})
+                placeholder = { Text(text = "Número de RG")},
+                singleLine = true,
+                maxLines = 1)
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(10.dp).fillMaxWidth(),
                 value = numeroDoCartaoDoSUS,
                 onValueChange = {numeroDoCartaoDoSUS = it},
                 shape = CircleShape,
-                placeholder = { Text(text = "Número do Cartão do SUS")})
+                placeholder = { Text(text = "Número do Cartão do SUS")},
+                singleLine = true,
+                maxLines = 1)
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(10.dp).fillMaxWidth(),
                 value = endereco,
                 onValueChange = {endereco = it},
                 shape = CircleShape,
-                placeholder = { Text(text = "Endereço")})
+                placeholder = { Text(text = "Endereço")},
+                singleLine = true,
+                maxLines = 1)
 
             Row(
                 modifier = Modifier
@@ -218,7 +226,7 @@ fun PerfilUser(navController: NavController){
                     colors = ButtonDefaults.outlinedButtonColors(
                         backgroundColor = verdoDoBotao
                     ),
-                    shape = CircleShape) {
+                    shape = CircleShape){
                     Text(text = "Sim", color = Color.White)
                 }
 
