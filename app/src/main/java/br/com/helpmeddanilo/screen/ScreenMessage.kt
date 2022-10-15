@@ -18,6 +18,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.SecureFlagPolicy
 import androidx.navigation.NavController
 import br.com.helpmeddanilo.R
 import br.com.helpmeddanilo.navigation.Screens
@@ -145,6 +147,7 @@ fun ScreenMessage(navController: NavController){
 
                             },
                     text = {Text(text = "Seu atendimento esta sendo encaminhado")},
+                    shape = RoundedCornerShape(20.dp),
                     confirmButton = {
                         /*Button(
                             onClick = {
@@ -155,12 +158,16 @@ fun ScreenMessage(navController: NavController){
                         }*/
                     },
                     dismissButton = {
-                        Button(
+                        OutlinedButton(
                             onClick = {
                                 openDialog.value = true
                                 navController.navigate(Screens.ServiceEvaluation.route)
-                            }) {
-                            Text(text = "Ok")
+                            },
+                        shape = CircleShape,
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                backgroundColor = verdoDoBotao
+                            )) {
+                            Text(text = "Ok", color = Color.White)
                         }
                     }
                 )

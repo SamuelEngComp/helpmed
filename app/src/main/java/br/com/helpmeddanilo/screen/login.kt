@@ -24,6 +24,10 @@ import br.com.helpmeddanilo.R
 import br.com.helpmeddanilo.navigation.Screens
 import br.com.helpmeddanilo.ui.theme.corDaBordaDosCamposLogin
 import br.com.helpmeddanilo.ui.theme.verdoDoBotao
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 
 
 @Composable
@@ -149,9 +153,12 @@ fun Login(navController: NavController){
                         .padding(10.dp))
             }
         }
+
+
         
 
     }
 
 
 }
+

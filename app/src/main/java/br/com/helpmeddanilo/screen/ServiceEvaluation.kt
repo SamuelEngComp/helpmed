@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
@@ -155,23 +156,38 @@ fun ServiceEvaluation(navController: NavController){
             if (abrirAlert){
                 AlertDialog(
                     onDismissRequest = { openDialog.value = false },
-                    title = { Image(painter = painterResource(id = R.drawable.ic_baseline_thumb_up_24),
-                        contentDescription = "icone curtir",
-                        modifier = Modifier.size(60.dp),
-                        alignment = Alignment.Center)},
-                    text = {Text(text = "Muito obrigado por sua avaliação")},
+                    title = {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_baseline_thumb_up_24),
+                            contentDescription = "icone curtir",
+                            modifier = Modifier
+                                    .size(60.dp),
+                            alignment = Alignment.Center
+                        )
+
+                        },
+                    text = {Text(text = "Muito obrigado por sua avaliação",
+                        modifier = Modifier.padding(8.dp))},
+
+                    shape = RoundedCornerShape(20.dp),
                     confirmButton = {
                         /*Button(onClick = { openDialog.value = false }) {
                             Text(text = "Ok")
                         }*/
                     },
                     dismissButton = {
-                        Button(
+                        OutlinedButton(
                             onClick = {
                                 openDialog.value = true
                                 navController.navigate(Screens.Login.route)
-                            }) {
-                            Text(text = "ok")
+                            },
+                        shape = CircleShape,
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                backgroundColor = verdoDoBotao
+                            )
+                        )
+                        {
+                            Text(text = "ok", color = Color.White)
                         }
                     }
                 )
