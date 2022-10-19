@@ -39,15 +39,13 @@ fun SplashScreen(navController: NavController){
     val alphaAnim = animateFloatAsState(
         targetValue = if(iniciarAnimacao) 1f else 0f,
         animationSpec = tween(
-            durationMillis = 3000,
+            durationMillis = 3000, //3000
             easing = LinearOutSlowInEasing
         ))
 
-
-
     LaunchedEffect(key1 = true){
         iniciarAnimacao = true
-        delay(4000)
+        delay(4000) //4000
         navController.popBackStack()
         navController.navigate(Screens.Login.route)
     }
@@ -78,10 +76,7 @@ fun Splash(alpha: Float){
             fontSize = 10.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.alpha(alpha = alpha))
-
     }
-    
-    
 }
 
 

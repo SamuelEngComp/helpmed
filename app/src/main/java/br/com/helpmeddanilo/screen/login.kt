@@ -153,12 +153,6 @@ fun Login(navController: NavController){
                         .padding(10.dp))
             }
         }
-
-
-        
-
     }
-
-
 }
 
