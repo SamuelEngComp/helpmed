@@ -1,33 +1,37 @@
 package br.com.helpmeddanilo.screen
 
-import android.util.Log
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Call
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
+import androidx.compose.ui.graphics.Color.Companion.LightGray
+import androidx.compose.ui.graphics.Color.Companion.Transparent
+import androidx.compose.ui.graphics.Color.Companion.Unspecified
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import br.com.helpmeddanilo.R
 import br.com.helpmeddanilo.navigation.Screens
+import br.com.helpmeddanilo.ui.theme.corDaBordaDosCamposLogin
 import br.com.helpmeddanilo.ui.theme.verdoDoBotao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 
 @Composable
 fun PerfilUser(navController: NavController){
+
+    //chip
+    //val textChipRememberOneState = remember { mutableStateOf(false) }
+
+    var tipoSanguineo by remember { mutableStateOf("") }
+    var doadorSangue by remember { mutableStateOf("") }
 
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     //val coroutineScope: CoroutineScope = rememberCoroutineScope()
@@ -65,7 +69,9 @@ fun PerfilUser(navController: NavController){
             Spacer(modifier = Modifier.height(10.dp))
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
                 value = nomeCompletoDoPaciente,
                 onValueChange = {nomeCompletoDoPaciente = it},
                 shape = CircleShape,
@@ -75,7 +81,9 @@ fun PerfilUser(navController: NavController){
             )
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
                 value = numeroDoRG,
                 onValueChange = {numeroDoRG = it},
                 shape = CircleShape,
@@ -84,7 +92,9 @@ fun PerfilUser(navController: NavController){
                 maxLines = 1)
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
                 value = numeroDoCartaoDoSUS,
                 onValueChange = {numeroDoCartaoDoSUS = it},
                 shape = CircleShape,
@@ -93,7 +103,9 @@ fun PerfilUser(navController: NavController){
                 maxLines = 1)
 
             OutlinedTextField(
-                modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth(),
                 value = endereco,
                 onValueChange = {endereco = it},
                 shape = CircleShape,
@@ -119,29 +131,55 @@ fun PerfilUser(navController: NavController){
             ) {
                 Column() {
                     Row(modifier = Modifier.padding(8.dp)) {
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
-                            Text(text = "A+", color = Color.White)
+                        IconButton(
+                            onClick = {
+                                tipoSanguineo = "A+"
+                                      },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "A+") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
+
+                            Text(
+                                text = "A+",
+                                color = Color.White
+                            )
                         }
+
+                        /*TextChip(
+                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape),
+                            isSelected = textChipRememberOneState.value,
+                            text = "A+",
+                            onChecked = {textChipRememberOneState.value = it}
+                        )*/
 
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
+                        IconButton(onClick = { tipoSanguineo = "A-" },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "A-") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
                             Text(text = "A-", color = Color.White)
                         }
                     }
 
                     Row(modifier = Modifier.padding(8.dp)) {
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
+                        IconButton(onClick = { tipoSanguineo = "AB+" },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "AB+") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
                             Text(text = "AB+", color = Color.White)
                         }
 
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
+                        IconButton(onClick = { tipoSanguineo = "AB-" },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "AB-") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
                             Text(text = "AB-", color = Color.White)
                         }
                     }
@@ -151,30 +189,41 @@ fun PerfilUser(navController: NavController){
                 Column() {
                     Row(modifier = Modifier.padding(8.dp)) {
                         IconButton(
-                            onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)
+                            onClick = { tipoSanguineo = "B+" },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "B+") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)
                         ) {
                             Text(text = " B+ ", color = Color.White)
                         }
                         
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
+                        IconButton(onClick = { tipoSanguineo = "B-" },
+                            modifier = Modifier
+                                .background(if(tipoSanguineo == "B-") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
                             Text(text = "B-", color = Color.White)
                         }
                     }
 
                     Row(modifier = Modifier.padding(8.dp)) {
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
+                        IconButton(onClick = { tipoSanguineo = "O+" },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "O+") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
                             Text(text = "O+", color = Color.White)
                         }
 
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        IconButton(onClick = { /*TODO*/ },
-                            modifier = Modifier.background(verdoDoBotao, shape = CircleShape)) {
+                        IconButton(onClick = { tipoSanguineo = "O-" },
+                            modifier = Modifier
+                                .background(
+                                    if(tipoSanguineo == "O-") Color.Black else verdoDoBotao,
+                                    shape = CircleShape)) {
                             Text(text = "O-", color = Color.White)
                         }
                     }
@@ -222,27 +271,23 @@ fun PerfilUser(navController: NavController){
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { doadorSangue = "Sim" },
                     colors = ButtonDefaults.outlinedButtonColors(
-                        backgroundColor = verdoDoBotao
+                        backgroundColor = if (doadorSangue == "Sim") Color.Black else verdoDoBotao
                     ),
                     shape = CircleShape){
                     Text(text = "Sim", color = Color.White)
                 }
 
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { doadorSangue = "Não" },
                     colors = ButtonDefaults.outlinedButtonColors(
-                        backgroundColor = verdoDoBotao
+                        backgroundColor = if (doadorSangue == "Não") Color.Black else verdoDoBotao
                     ),
                     shape = CircleShape) {
                     Text(text = "Não", color = Color.White)
                 }
             }
-
-
-
-
         }
         }
     )
@@ -286,4 +331,48 @@ fun BarraNavegacaoUser(navController: NavController){
     )
 }
 
+/**
+ * CHIP FUNCIONANDO
+ */
+/*
+
+@Composable
+fun TextChip(
+    modifier: Modifier,
+    isSelected: Boolean,
+    text: String,
+    onChecked: (Boolean) -> Unit,
+    selectedColor: Color = DarkGray
+) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .padding(
+                vertical = 2.dp,
+                horizontal = 2.dp
+            )
+            .border(
+                width = 1.dp,
+                color = if (isSelected) selectedColor else LightGray,
+                shape = CircleShape //MaterialTheme.shapes.medium
+            )
+            .background(
+                color = if (isSelected) selectedColor else verdoDoBotao,//Transparent,
+                shape = CircleShape //MaterialTheme.shapes.medium
+            )
+            .clip(shape = CircleShape) //MaterialTheme.shapes.medium
+            .clickable {
+                onChecked(!isSelected)
+            }
+            .padding(4.dp)
+    ) {
+        Text(
+            text = text,
+            color = if (isSelected) corDaBordaDosCamposLogin else White,//Unspecified,
+            modifier = Modifier.padding(10.dp)
+        )
+    }
+}
+*/
 

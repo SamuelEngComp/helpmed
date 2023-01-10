@@ -66,7 +66,7 @@ fun ServiceEvaluation(navController: NavController){
                         onClick = {
                             abrirAlert = !abrirAlert
                         },
-                        modifier = Modifier.fillMaxWidth(0.7f),
+                        modifier = Modifier.fillMaxWidth(0.7f).padding(10.dp),
                         shape = CircleShape,
                         colors = ButtonDefaults.outlinedButtonColors(
                             backgroundColor = verdoDoBotao)
@@ -79,7 +79,7 @@ fun ServiceEvaluation(navController: NavController){
                         onClick = {
                             abrirAlert = !abrirAlert
                         },
-                        modifier = Modifier.fillMaxWidth(0.7f),
+                        modifier = Modifier.fillMaxWidth(0.7f).padding(10.dp),
                         shape = CircleShape,
                         colors = ButtonDefaults.outlinedButtonColors(
                             backgroundColor = verdoDoBotao)
@@ -92,7 +92,7 @@ fun ServiceEvaluation(navController: NavController){
                         onClick = {
                             abrirAlert = !abrirAlert
                         },
-                        modifier = Modifier.fillMaxWidth(0.7f),
+                        modifier = Modifier.fillMaxWidth(0.7f).padding(10.dp),
                         shape = CircleShape,
                         colors = ButtonDefaults.outlinedButtonColors(
                             backgroundColor = verdoDoBotao)
@@ -105,7 +105,7 @@ fun ServiceEvaluation(navController: NavController){
                         onClick = {
                             abrirAlert = !abrirAlert
                         },
-                        modifier = Modifier.fillMaxWidth(0.7f),
+                        modifier = Modifier.fillMaxWidth(0.7f).padding(10.dp),
                         shape = CircleShape,
                         colors = ButtonDefaults.outlinedButtonColors(
                             backgroundColor = verdoDoBotao
@@ -119,7 +119,7 @@ fun ServiceEvaluation(navController: NavController){
                         onClick = {
                             abrirAlert = !abrirAlert
                         },
-                        modifier = Modifier.fillMaxWidth(0.7f),
+                        modifier = Modifier.fillMaxWidth(0.7f).padding(10.dp),
                         shape = CircleShape,
                         colors = ButtonDefaults.outlinedButtonColors(
                             backgroundColor = verdoDoBotao)
@@ -135,9 +135,10 @@ fun ServiceEvaluation(navController: NavController){
             Row(modifier = Modifier.padding(10.dp)) {
                 OutlinedButton(
                     onClick = {
+                        navController.popBackStack()
                         navController.navigate(route = Screens.Welcome.route)
                     },
-                    modifier = Modifier.fillMaxWidth(0.7f),
+                    modifier = Modifier.fillMaxWidth(0.7f).padding(10.dp),
                     shape = RoundedCornerShape(20.dp),
                     border = BorderStroke(1.dp, color = verdoDoBotao)
                 ){
@@ -179,6 +180,7 @@ fun ServiceEvaluation(navController: NavController){
                         OutlinedButton(
                             onClick = {
                                 openDialog.value = true
+                                navController.popBackStack()
                                 navController.navigate(Screens.Login.route)
                             },
                         shape = CircleShape,
