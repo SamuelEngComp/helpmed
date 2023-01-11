@@ -69,17 +69,18 @@ fun Splash(alpha: Float){
                 .size(250.dp)
                 .alpha(alpha = alpha))
 
-        Loader(alpha = alpha)
+       // Loader(alpha = alpha)
 
-        Text(
+        /*Text(
             text = "App em desenvolvimento",
             fontSize = 10.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.alpha(alpha = alpha))
+            modifier = Modifier.alpha(alpha = alpha))*/
     }
 }
 
 
+/*
 
 
 @Composable
@@ -91,4 +92,4 @@ fun Loader(alpha: Float) {
         composition = composition,
         progress = { progress },
     )
-}
+}*/
